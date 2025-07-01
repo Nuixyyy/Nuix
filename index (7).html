@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقعي الشخصي - محمد</title>
+    <!-- تضمين Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- خط Inter من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome لإضافة الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* تعريف الخط الافتراضي */
+        body {
+            font-family: 'Inter', sans-serif;
+            @apply bg-gray-50 text-gray-800; /* ألوان أساسية للخلفية والنص */
+        }
+        /* التمرير السلس */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* لتجنب CLS (Cumulative Layout Shift) */
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- شريط التنقل العلوي -->
+    <header class="bg-white shadow-sm fixed w-full z-50 py-4">
+        <nav class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-blue-600 rounded-lg p-2 hover:bg-blue-50 transition duration-300">
+                محمد
+            </a>
+            <ul class="hidden md:flex space-x-6 space-x-reverse">
+                <li><a href="#hero" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 p-2 rounded-lg hover:bg-gray-100">الرئيسية</a></li>
+                <li><a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 p-2 rounded-lg hover:bg-gray-100">عني</a></li>
+                <li><a href="#skills" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 p-2 rounded-lg hover:bg-gray-100">مهاراتي</a></li>
+                <li><a href="#projects" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 p-2 rounded-lg hover:bg-gray-100">مشاريعي</a></li>
+                <li><a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 p-2 rounded-lg hover:bg-gray-100">تواصل معي</a></li>
+            </ul>
+            <!-- زر قائمة الجوال (Hamburger menu) -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- قائمة الجوال المنبثقة -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-40 hidden flex-col items-center justify-center space-y-6 pt-16">
+        <button id="close-mobile-menu" class="absolute top-4 right-4 text-gray-700 text-3xl focus:outline-none">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#hero" class="text-gray-800 text-xl hover:text-blue-600 font-medium transition duration-300" onclick="closeMobileMenu()">الرئيسية</a>
+        <a href="#about" class="text-gray-800 text-xl hover:text-blue-600 font-medium transition duration-300" onclick="closeMobileMenu()">عني</a>
+        <a href="#skills" class="text-gray-800 text-xl hover:text-blue-600 font-medium transition duration-300" onclick="closeMobileMenu()">مهاراتي</a>
+        <a href="#projects" class="text-gray-800 text-xl hover:text-blue-600 font-medium transition duration-300" onclick="closeMobileMenu()">مشاريعي</a>
+        <a href="#contact" class="text-gray-800 text-xl hover:text-blue-600 font-medium transition duration-300" onclick="closeMobileMenu()">تواصل معي</a>
+    </div>
+
+    <main class="pt-20">
+        <!-- قسم البطل (Hero Section) -->
+        <section id="hero" class="min-h-screen flex items-center justify-center text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white py-16 px-4 rounded-b-3xl shadow-lg">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
+                    أهلاً بك في عالم محمد البرمجي
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl mb-8 opacity-90">
+                    أنا مطور برمجيات شغوف بتحويل الأفكار إلى حلول تقنية مبتكرة.
+                </p>
+                <!-- تم تعديل هذا الزر للانتقال إلى قسم المشاريع -->
+                <a href="#projects" class="inline-block bg-white text-blue-600 hover:bg-blue-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                    مشاريعي
+                </a>
+            </div>
+        </section>
+
+        <!-- قسم عني -->
+        <section id="about" class="py-16 md:py-24 bg-gray-100 px-4">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-800">عني: محمد (Nuix)</h2>
+                <div class="flex flex-col md:flex-row items-center md:items-start md:space-x-8 md:space-x-reverse text-right">
+                    <!-- تم تعديل مسار الصورة الشخصية لاستدعائها من الملفات -->
+                    <img src="iconnuix.jpg" onerror="this.onerror=null;this.src='https://placehold.co/200x200/cccccc/333333?text=صورتك';" alt="صورة شخصية لمحمد" class="w-48 h-48 rounded-full object-cover mb-6 md:mb-0 shadow-lg border-4 border-white">
+                    <div class="text-lg text-gray-700 leading-relaxed">
+                        <p class="mb-4">أهلاً بك! أنا محمد، المعروف أيضًا باسم Nuix، مبرمج ذو خبرة بدأت رحلتي في عالم البرمجة عام 2020.</p>
+                        <p class="mb-4">تركزت بداياتي على تطوير بوتات ديسكورد باستخدام لغة JavaScript ومكتبة discord.js. توسعت مهاراتي لاحقًا لتشمل تطوير الويب، حيث أتقنت JavaScript و HTML و CSS. هذه اللغات أساسية في بناء واجهات المستخدم التفاعلية وتصميم المواقع الجذابة.</p>
+                        <p>الآن، أجمع بين خبرتي في تطوير البوتات وإنشاء المواقع الإلكترونية، مما يجعلني مبرمجًا versatile قادرًا على تقديم حلول برمجية متكاملة للويب وبوتات ديسكورد.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم مهاراتي -->
+        <section id="skills" class="py-16 md:py-24 bg-gray-50 px-4">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-800">مهاراتي</h2>
+                <div class="flex flex-wrap justify-center gap-4 text-lg">
+                    <span class="bg-blue-600 text-white py-2 px-5 rounded-full shadow-md transform hover:scale-105 transition duration-300">JavaScript</span>
+                    <span class="bg-red-600 text-white py-2 px-5 rounded-full shadow-md transform hover:scale-105 transition duration-300">HTML</span>
+                    <span class="bg-green-600 text-white py-2 px-5 rounded-full shadow-md transform hover:scale-105 transition duration-300">CSS</span>
+                    <span class="bg-purple-600 text-white py-2 px-5 rounded-full shadow-md transform hover:scale-105 transition duration-300">discord.js</span>
+                    <!-- أضف المزيد من المهارات هنا -->
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم المشاريع -->
+        <section id="projects" class="py-16 md:py-24 bg-gray-100 px-4">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">أبرز مشاريعي</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- بطاقة مشروع متجر الكتروني (MARKSTOR) -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden project-card">
+                        <div class="relative">
+                            <!-- تم تغيير object-cover إلى object-contain -->
+                            <img src="markstore.jpg" alt="صورة مشروع متجر الكتروني MARKSTOR" class="w-full h-48 object-contain rounded-t-xl">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">مشروع متجر الكتروني (MARKSTOR)</h3>
+                            <p class="text-gray-700 text-sm mb-4">مشروع متجر الكتروني بواجهة مميزة وألوان جميلة. يهدف إلى توفير تجربة تسوق سلسة وجذابة للمستخدمين.</p>
+                            <div class="flex flex-wrap gap-4 mb-4">
+                                <a href="https://markstore.vercel.app/" target="_blank" class="inline-flex items-center justify-center bg-blue-500 text-white text-sm font-medium py-2 px-4 rounded-full shadow-md hover:bg-blue-600 transition duration-300 transform hover:scale-105" title="زيارة موقع MARKSTOR">
+                                    <i class="fas fa-external-link-alt ml-2"></i>
+                                    زيارة الموقع
+                                </a>
+                                <a href="https://www.tiktok.com/@mark_store1?_t=ZS-8xWkWCjjXRU&_r=1" target="_blank" class="inline-flex items-center justify-center bg-gray-700 text-white text-sm font-medium py-2 px-4 rounded-full shadow-md hover:bg-gray-800 transition duration-300 transform hover:scale-105" title="حساب MARKSTOR على TikTok">
+                                    <i class="fab fa-tiktok ml-2"></i>
+                                    تيك توك المالك
+                                </a>
+                            </div>
+                            <div class="flex flex-wrap gap-2 text-xs font-medium text-blue-600 mt-4 border-t pt-4 border-gray-200">
+                                <span class="bg-blue-100 py-1 px-3 rounded-full">JavaScript</span>
+                                <span class="bg-blue-100 py-1 px-3 rounded-full">HTML</span>
+                                <span class="bg-blue-100 py-1 px-3 rounded-full">CSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- بطاقة مشروع موقع كلان Arc -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden project-card">
+                        <div class="relative">
+                            <!-- تم تغيير object-cover إلى object-contain -->
+                            <img src="arcclan.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/a3a3a3/ffffff?text=موقع+كلان+Arc';" alt="صورة مشروع موقع كلان Arc" class="w-full h-48 object-contain rounded-t-xl">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">موقع كلان Arc</h3>
+                            <p class="text-gray-700 text-sm mb-4">موقع خاص في كلان Arc يتم نشر فيه تركيبات اسلحه Delta Force. الموقع بألوان جميلة وموقع سلس وسهل للمستخدمين.</p>
+                            <div class="flex flex-wrap gap-4 mb-4">
+                                <a href="https://arc-clan.vercel.app/" target="_blank" class="inline-flex items-center justify-center bg-blue-500 text-white text-sm font-medium py-2 px-4 rounded-full shadow-md hover:bg-blue-600 transition duration-300 transform hover:scale-105" title="زيارة موقع كلان Arc">
+                                    <i class="fas fa-external-link-alt ml-2"></i>
+                                    زيارة الموقع
+                                </a>
+                            </div>
+                            <div class="flex flex-wrap gap-2 text-xs font-medium text-blue-600 mt-4 border-t pt-4 border-gray-200">
+                                <span class="bg-blue-100 py-1 px-3 rounded-full">HTML</span>
+                                <span class="bg-blue-100 py-1 px-3 rounded-full">JavaScript</span>
+                                <span class="bg-blue-100 py-1 px-3 rounded-full">CSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم تواصل معي -->
+        <section id="contact" class="py-16 md:py-24 bg-blue-600 text-white px-4 rounded-t-3xl shadow-lg">
+            <div class="container mx-auto max-w-3xl text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8">تواصل معي</h2>
+                <p class="text-lg mb-8 opacity-90">
+                    هل لديك مشروع في ذهنك أو ترغب في التواصل؟ لا تتردد في مراسلتي!
+                </p>
+                <div class="space-y-6">
+                    <a href="https://www.instagram.com/imis2i" target="_blank" class="flex items-center justify-center bg-white text-blue-600 hover:bg-blue-100 font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
+                        <i class="fab fa-instagram ml-3 text-xl"></i>
+                        انستغرام
+                    </a>
+                    <a href="https://discord.com/users/768505337451773993" target="_blank" class="flex items-center justify-center bg-white text-blue-600 hover:bg-blue-100 font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
+                        <i class="fab fa-discord ml-3 text-xl"></i>
+                        ديسكورد
+                    </a>
+                    <!-- أضف المزيد من روابط التواصل الاجتماعي هنا إذا أردت -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- تذييل الصفحة -->
+    <footer class="bg-gray-800 text-white py-8 text-center px-4">
+        <div class="container mx-auto">
+            <p class="mb-4">&copy; 2025 محمد. جميع الحقوق محفوظة.</p>
+            <p class="text-sm opacity-80">
+                تصميم وتطوير بواسطة محمد
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript للتمرير السلس لقوائم التنقل
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // JavaScript لزر قائمة الجوال (Hamburger menu)
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // منع التمرير في الخلفية
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+            document.body.style.overflow = ''; // السماح بالتمرير مرة أخرى
+        }
+
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMobileMenuButton.addEventListener('click', closeMobileMenu);
+
+        // إغلاق قائمة الجوال عند النقر على رابط
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', closeMobileMenu);
+        });
+
+        // إخفاء قائمة الجوال عند تغيير حجم الشاشة إلى سطح المكتب
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) { // 768px هو breakpoint md في Tailwind
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
